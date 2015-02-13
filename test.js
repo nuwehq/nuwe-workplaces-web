@@ -7,13 +7,47 @@ describe('requests to the root path', function() {
   	
     request(app)
       .get('/')
-      .expect(200)
-      .end(function(error) {
-  	    if(error) throw error
-  	    done();
+      .expect(200, done);
 
-    });
+  });
+
+  it('returns an html format', function(done){
+
+  	request(app)
+  	  .get('/')
+  	  .expect('Content-Type', /html/, done);
+
+  });
+
+  it('returns an index file with teams', function(done) {
+  	request(app)
+  	  .get('/')
+  	  .expect(/teams/i, done);
 
   });
 
 });
+
+describe('Listing Teams on /teams', function() {
+	
+	it('Returns 200 status code', function(done) {
+		request(app)
+		  .get('/teams')
+		  .expect(200, done);
+		  
+	});
+
+	it('Returns JSON format', function(done) {
+		request(app)
+		  .get('/teams')
+		  .expect('Content-Type', /json/, done);
+		  
+	});
+
+	it('Returns initial teams', function(done) {
+		request(app)
+		  .get('/teams')
+		  .expect(JSON.stringify(['Cubicle Gigglers', 'Haughty Leaders', 'Professional Pirates', 'Audits Smash']), done);
+	});
+});
+
