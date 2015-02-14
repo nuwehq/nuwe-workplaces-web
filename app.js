@@ -14,9 +14,10 @@ if (process.env.REDISTOGO_URL) {
 	client.auth(rtg.auth.split(":")[1]);
 } else {
 	var client = redis.createClient();
+	client.select = ((process.env.NODE_ENV || 'development').length);
 }
 
-client.select = ((process.env.NODE_ENV || 'development').length);
+
 // End redis connection
 
 app.get('/', function(request, response) {
@@ -36,6 +37,13 @@ app.post('/teams', urlencode, function(request, response){
 		response.status(201).json(newTeam.name);
 	});
 	
+});
+
+app.delete('/teams/:name', function(request, response){
+		client.hdel('teams', request.params.name, function(error){
+			response.sendStatus(204);
+		});
+
 });
 
 module.exports = app;

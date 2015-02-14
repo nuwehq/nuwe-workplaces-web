@@ -3,7 +3,11 @@ var app = require('./app');
 
 var redis = require('redis');
 var client = redis.createClient();
-client.select('test'.length);
+var testdb = 4;
+client.select(testdb, function(error, response){
+  if(error) return error;
+  client.set('key', 'string');
+});
 client.flushdb();
 
 describe('requests to the root path', function() {
@@ -34,6 +38,10 @@ describe('requests to the root path', function() {
 });
 
 describe('Listing Teams on /teams', function() {
+
+	beforeEach(function(){
+		client.flushdb();
+	});
 	
 	it('Returns 200 status code', function(done) {
 		request(app)
@@ -58,6 +66,10 @@ describe('Listing Teams on /teams', function() {
 
 describe('Creating new Teams', function(){
 
+	afterEach(function(){
+		client.flushdb();
+	});
+
 	it('Returns a 201 status code', function(done){
 
 		request(app)
@@ -77,3 +89,23 @@ describe('Creating new Teams', function(){
 
 });
 
+describe('Deleting Teams', function(){
+
+	before(function(){
+		client.hset('teams', 'Nuweesters', 'Are you well?');
+	});
+
+	after(function(){
+		client.flushdb();
+	});
+	
+
+	it('Returns a 204 status code', function(done){
+
+		request(app)
+		  .delete('/teams/Nuweesters')
+		  .expect(204, done)
+
+	});
+
+});
