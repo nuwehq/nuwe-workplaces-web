@@ -4,10 +4,7 @@ var app = require('./app');
 var redis = require('redis');
 var client = redis.createClient();
 var testdb = 4;
-client.select(testdb, function(error, response){
-  if(error) return error;
-  client.set('key', 'string');
-});
+client.select(testdb);
 client.flushdb();
 
 describe('requests to the root path', function() {
@@ -85,6 +82,13 @@ describe('Creating new Teams', function(){
 		  .send('name=Wired+Technokrats&description=the+techie+dudes')
 		  .expect(/Wired Technokrats/i, done);
 
+	});
+
+	it('validates team name', function(done){
+		request(app)
+		  .post('/teams')
+		  .send('name=')
+		  .expect(400, done);
 	});
 
 });

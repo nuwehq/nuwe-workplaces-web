@@ -32,6 +32,10 @@ app.get('/teams', function(request, response) {
 
 app.post('/teams', urlencode, function(request, response){
 	var newTeam = request.body;
+	if(!newTeam.name){
+		response.sendStatus(400);
+		return false;
+	}
 	client.hset('teams', newTeam.name, newTeam.description, function(error){
 		if(error) throw error;
 		response.status(201).json(newTeam.name);
