@@ -31,3 +31,17 @@ This runs shrinkwrap, which verifies your package.json & node_modules tree are i
 ```
 $ npm test
 ```
+
+# Get Involved
+
+This is an open source project which leverages the Nuwe Platform. You can get involved by forking the code and building cool stuff, before making a Pull Request.
+
+Take a look at our [Public Roadmap](https://trello.com/b/M0Zlt37t/workplaces-for-web) for the project and suggest features, pickup tasks, comment and discuss.
+
+Any issues or suggestions, please contact [steve@nuwe.co](mailto:steve@nuwe.co)
+
+
+# Interested in using the project for your company?
+
+You can either install the app yourself and set it up quickly (Quickstart documentation coming soon) or Contact Us to arrange for a hosted solution and customisations (paid service).
+
