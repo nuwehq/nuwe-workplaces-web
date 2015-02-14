@@ -51,3 +51,23 @@ describe('Listing Teams on /teams', function() {
 	});
 });
 
+describe('Creating new Teams', function(){
+
+	it('Returns a 201 status code', function(done){
+
+		request(app)
+		  .post('/teams')
+		  .send('name=Wired+Technokrats&description=the+techie+dudes')
+		  .expect(201, done);
+	});
+
+	it('Returns the Team name', function(done){
+
+		request(app)
+		  .post('/teams')
+		  .send('name=Wired+Technokrats&description=the+techie+dudes')
+		  .expect(/Wired Technokrats/i, done);
+
+	});
+
+});

@@ -45,3 +45,7 @@ Any issues or suggestions, please contact [steve@nuwe.co](mailto:steve@nuwe.co)
 
 You can either install the app yourself and set it up quickly (Quickstart documentation coming soon) or Contact Us to arrange for a hosted solution and customisations (paid service).
 
+
+# Demo Site
+
+Take a look at [Nuwe WorkPlaces](https://nuwe-workplaces.herokuapp.com/)
