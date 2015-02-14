@@ -113,3 +113,52 @@ describe('Deleting Teams', function(){
 	});
 
 });
+
+describe('Show Team Details', function(){
+
+	before(function(){
+		client.hset('teams', 'Nuwe', 'Nuweesters');
+	});
+
+	after(function(){
+		client.flushdb();
+	});
+
+	it('returns 200 status code', function(done){
+		request(app)
+		  .get('/teams/Nuwe')
+		  .expect(200, done);
+	});
+
+	it('returns html format', function(done){
+		request(app)
+		  .get('/teams/Nuwe')
+		  .expect('Content-Type', /html/, done);
+
+	});
+
+	it('returns the team name for given Team', function(done){
+		request(app)
+		  .get('/teams/Nuwe')
+		  .expect(/Nuwe/, done);
+
+	});
+
+	
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

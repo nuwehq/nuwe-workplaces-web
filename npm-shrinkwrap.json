@@ -87,6 +87,11 @@
         }
       }
     },
+    "ejs": {
+      "version": "2.2.4",
+      "from": "ejs@*",
+      "resolved": "https://registry.npmjs.org/ejs/-/ejs-2.2.4.tgz"
+    },
     "express": {
       "version": "4.11.2",
       "from": "express@>=4.0.0 <5.0.0",
