@@ -5,25 +5,37 @@ var urlencode = bodyParser.urlencoded({ extended: false });
 
 app.use(express.static('public'));
 
-var teams = {
-		'Cubicle Gigglers': 'You cannot stop the laughter',
-		'Haughty Leaders': 'The head hunchos',
-		'Professional Pirates': 'Arrgggggghhhh',
-		'Audits Smash': 'Have you filed your paperwork?'
-};
+// Redis Connection
+var redis = require('redis');
+
+if (process.env.REDISTOGO_URL) {
+  var rtg   = require("url").parse(process.env.REDISTOGO_URL);
+	var client = redis.createClient(rtg.port, rtg.hostname);
+	client.auth(rtg.auth.split(":")[1]);
+} else {
+	var client = redis.createClient();
+}
+
+client.select = ((process.env.NODE_ENV || 'development').length);
+// End redis connection
 
 app.get('/', function(request, response) {
   response.send('OK');
 });
 
 app.get('/teams', function(request, response) {
-	response.json(Object.keys(teams));
+	client.hkeys('teams', function(error, names){
+		response.json(names);
+	});
 });
 
 app.post('/teams', urlencode, function(request, response){
 	var newTeam = request.body;
-	teams[newTeam.name] = newTeam.description;
-	response.status(201).json(newTeam.name);
+	client.hset('teams', newTeam.name, newTeam.description, function(error){
+		if(error) throw error;
+		response.status(201).json(newTeam.name);
+	});
+	
 });
 
 module.exports = app;

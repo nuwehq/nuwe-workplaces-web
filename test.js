@@ -1,6 +1,11 @@
 var request = require('supertest');
 var app = require('./app');
 
+var redis = require('redis');
+var client = redis.createClient();
+client.select('test'.length);
+client.flushdb();
+
 describe('requests to the root path', function() {
 
   it('returns a 200 status code', function(done) {
@@ -47,7 +52,7 @@ describe('Listing Teams on /teams', function() {
 	it('Returns initial teams', function(done) {
 		request(app)
 		  .get('/teams')
-		  .expect(JSON.stringify(['Cubicle Gigglers', 'Haughty Leaders', 'Professional Pirates', 'Audits Smash']), done);
+		  .expect(JSON.stringify([]), done);
 	});
 });
 
