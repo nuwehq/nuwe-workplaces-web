@@ -3,7 +3,7 @@
 /* Base */
 
 html {
-  background: #f9b8b4; /* Old browsers */
+  background: #F8F9F9; /* Old browsers */
   /*background: url('bg-stars.png') repeat-x center top, linear-gradient(to bottom, #f9b8b4 0%, #ebe8ba 100%) no-repeat center; /* W3C */*/
   min-height: 100%;
 }
@@ -20,7 +20,7 @@ body {
 /* Headings */
 
 h1 {
-  color: white;
+  color: #3fa9f5;
   margin-bottom: 20px;
 }
 
@@ -32,16 +32,25 @@ ul {
   padding: 0;
 }
 ul li {
-  margin-bottom: 10px;
+  margin-bottom: 0px;
+  padding: 20px;
 }
 ul li:last-child {
   margin-bottom: 0;
 }
 
+ul li:nth-child(odd) {
+  background-color: #eeeeee;
+}
+
+ul li:nth-child(even) {
+  background-color: #F8F9F9;
+}
+
 /* Links */
 
 a {
-  color: #d19b99;
+  color: #666666;
   text-decoration: underline;
   transition: color 0.2s ease-in-out;
 }
@@ -56,6 +65,10 @@ form, .team-list {
   background: white;
   margin-bottom: 20px;
   padding: 20px;
+}
+
+.team-list {
+  padding: 0px;
 }
 
 /* Form */
