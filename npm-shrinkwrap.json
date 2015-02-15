@@ -317,6 +317,34 @@
         }
       }
     },
+    "passport-nuwe": {
+      "version": "1.0.0",
+      "from": "passport-nuwe@*",
+      "dependencies": {
+        "passport-oauth2": {
+          "version": "1.1.2",
+          "from": "passport-oauth2@>=1.0.0 <2.0.0",
+          "resolved": "https://registry.npmjs.org/passport-oauth2/-/passport-oauth2-1.1.2.tgz",
+          "dependencies": {
+            "passport-strategy": {
+              "version": "1.0.0",
+              "from": "passport-strategy@>=1.0.0 <2.0.0",
+              "resolved": "https://registry.npmjs.org/passport-strategy/-/passport-strategy-1.0.0.tgz"
+            },
+            "oauth": {
+              "version": "0.9.12",
+              "from": "oauth@>=0.9.0 <0.10.0",
+              "resolved": "https://registry.npmjs.org/oauth/-/oauth-0.9.12.tgz"
+            },
+            "uid2": {
+              "version": "0.0.3",
+              "from": "uid2@>=0.0.0 <0.1.0",
+              "resolved": "https://registry.npmjs.org/uid2/-/uid2-0.0.3.tgz"
+            }
+          }
+        }
+      }
+    },
     "redis": {
       "version": "0.12.1",
       "from": "redis@*",
