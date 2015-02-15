@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  
+  h1 Login To Workplace
+  p.lead Start today and improve the place your work
+  a(href="/") Go home
+  br
+  a(href="/auth/github") Login via Github
+  br
+  a(href="/auth/nuwe") Login via Nuwe
+
+
+ script(type="text/javascript").
+  $("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("active");
+  });

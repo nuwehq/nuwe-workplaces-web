@@ -29,7 +29,7 @@ $(function(){
       team = teams[i];
       content = '<a href="/teams/'+team+'">'+team+'</a>'+ // + // example on how to serve static images
         ' <a href="#" data-team="'+team+'">'+
-        '<img src="delete.png" width="15px"></a>';
+        '<img src="/img/delete.png" width="15px"></a>';
       list.push($('<li>', { html: content }));
     }
 

@@ -22,7 +22,7 @@ if (process.env.REDISTOGO_URL) {
 var router = express.Router();
 
 
-router.route('/')
+router.route('/teams')
   .get(function(request, response) {
 		client.hkeys('teams', function(error, names){
 			if(error) throw error;
@@ -43,7 +43,7 @@ router.route('/')
 	
 });
 
-router.route('/:name')
+router.route('/teams/:name')
 	.delete(function(request, response){
 		client.hdel('teams', request.params.name, function(error){
 			if(error) throw error;

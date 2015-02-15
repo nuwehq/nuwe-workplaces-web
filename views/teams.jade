@@ -1,0 +1,28 @@
+doctype html
+html
+head
+	title= title
+	meta(name='viewport', content='width=device-width, initial-scale=1.0')
+	link(href='/css/style-test.css', rel='stylesheet', media='screen')
+body
+
+	h1 Teams
+
+	.alert Invalid Team
+
+	form
+		legend 
+			| New Team
+		input(name="name", placeholder="Name")
+		br
+		input(name="description", placeholder="description")
+		input(type="submit")
+
+	ul.team-list
+
+
+	
+	a(href="/logout") Logout
+
+script(src='/js/jquery.js')
+script(src='/js/client.js')
