@@ -2,6 +2,8 @@ var fs = require('fs');
 var http = require('http');
 var express = require('express');
 var routes = require('./routes');
+var bodyParser = require('body-parser');
+var urlencode = bodyParser.urlencoded({ extended: false });
 var path = require('path');
 var config = require('./oauth.js');
 var passport = require('passport');
@@ -57,19 +59,70 @@ var app = express();
 
 // app.use(express.static('public'));
 
-var teams = require('./routes/teams');
-app.use('/teams', teams);
+// Redis Connection
+var redis = require('redis');
+
+if (process.env.REDISTOGO_URL) {
+  var rtg   = require("url").parse(process.env.REDISTOGO_URL);
+	var client = redis.createClient(rtg.port, rtg.hostname);
+	client.auth(rtg.auth.split(":")[1]);
+} else {
+	var client = redis.createClient();
+	client.select = ((process.env.NODE_ENV || 'development').length);
+}
+
+
+// End redis connection
+app.get('/', function(req, res){
+	res.render('index', { user: req.user });
+});
+
+app.get('/teams', function(request, response) {
+	client.hkeys('teams', function(error, names){
+		if(error) throw error;
+		response.render('teams', { teams: names});
+	});
+});
+
+app.post('/teams', urlencode, function(request, response){
+	var newTeam = request.body;
+	if(!newTeam.name){
+		response.sendStatus(400);
+		return false;
+	}
+	client.hset('teams', newTeam.name, newTeam.description, function(error){
+		if(error) throw error;
+		response.status(201).json(newTeam.name);
+	});
+	
+});
+
+app.delete('/teams/:name', function(request, response){
+		client.hdel('teams', request.params.name, function(error){
+			if(error) throw error;
+			response.sendStatus(204);
+		});
+
+});
+
+app.get('/teams/:name', function(request, response){
+	client.hget('teams', request.params.name, function(error, description){
+    response.render('show.ejs', 
+    	{ team: 
+    		{ name: request.params.name, description: description } 
+    	});
+	});
+});
+
 
 // routes
-app.get('/', routes.index);
-// app.get('/ping', routes.ping);
-app.get('/teams', function(req, res){
-res.render('teams', { user: req.user });
-});
+// app.get('/', routes.index);
+// // app.get('/ping', routes.ping);
+// app.get('/teams', function(req, res){
+// res.render('teams', { user: req.user });
+// });
 
-app.get('/', function(req, res){
-	res.render('login', { user: req.user });
-});
+
 
 app.get('/auth/nuwe',
 passport.authenticate('nuwe'),
