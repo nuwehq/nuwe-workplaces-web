@@ -1,0 +1,27 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'shrinkwrap' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.36
+4 error Error: Problems were encountered
+4 error Please correct and try again.
+4 error extraneous: mongodb@1.4.30 /Users/steveschofield/Documents/Sites/Nuwe/Demos/NuweWorkplace/node_modules/mongodb
+4 error extraneous: mongoose@3.8.23 /Users/steveschofield/Documents/Sites/Nuwe/Demos/NuweWorkplace/node_modules/mongoose
+4 error     at shrinkwrap_ (/usr/local/lib/node_modules/npm/lib/shrinkwrap.js:30:15)
+4 error     at /usr/local/lib/node_modules/npm/lib/shrinkwrap.js:24:5
+4 error     at /usr/local/lib/node_modules/npm/lib/ls.js:45:30
+4 error     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:130:5
+4 error     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:244:14
+4 error     at cb (/usr/local/lib/node_modules/npm/node_modules/slide/lib/async-map.js:47:24)
+4 error     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:244:14
+4 error     at cb (/usr/local/lib/node_modules/npm/node_modules/slide/lib/async-map.js:47:24)
+4 error     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:244:14
+4 error     at cb (/usr/local/lib/node_modules/npm/node_modules/slide/lib/async-map.js:47:24)
+5 error If you need help, you may report this *entire* log,
+5 error including the npm and node versions, at:
+5 error     <http://github.com/npm/npm/issues>
+6 error System Darwin 14.1.0
+7 error command "/usr/local/bin/node" "/usr/local/bin/npm" "shrinkwrap"
+8 error cwd /Users/steveschofield/Documents/Sites/Nuwe/Demos/NuweWorkplace
+9 error node -v v0.10.36
+10 error npm -v 1.4.28
+11 verbose exit [ 1, true ]
