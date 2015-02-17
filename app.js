@@ -98,6 +98,7 @@ app.post('/teams', urlencode, function(request, response){
 	client.hset('teams', newTeam.name, newTeam.description, function(error){
 		if(error) throw error;
 		response.status(201).json(newTeam.name);
+		console.log(newTeam.name);
 	});
 	
 });
