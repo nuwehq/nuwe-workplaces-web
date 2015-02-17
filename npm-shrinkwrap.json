@@ -257,7 +257,7 @@
         },
         "serve-static": {
           "version": "1.8.1",
-          "from": "serve-static@>=1.8.1 <1.9.0",
+          "from": "serve-static@1.8.1",
           "resolved": "https://registry.npmjs.org/serve-static/-/serve-static-1.8.1.tgz"
         },
         "type-is": {
@@ -267,12 +267,12 @@
           "dependencies": {
             "mime-types": {
               "version": "2.0.9",
-              "from": "mime-types@>=2.0.9 <2.1.0",
+              "from": "mime-types@~2.0.9",
               "resolved": "https://registry.npmjs.org/mime-types/-/mime-types-2.0.9.tgz",
               "dependencies": {
                 "mime-db": {
                   "version": "1.7.0",
-                  "from": "mime-db@>=1.7.0 <1.8.0",
+                  "from": "mime-db@~1.7.0",
                   "resolved": "https://registry.npmjs.org/mime-db/-/mime-db-1.7.0.tgz"
                 }
               }
@@ -380,18 +380,18 @@
           "dependencies": {
             "promise": {
               "version": "2.0.0",
-              "from": "promise@>=2.0.0 <2.1.0",
+              "from": "promise@~2.0",
               "dependencies": {
                 "is-promise": {
                   "version": "1.0.1",
-                  "from": "is-promise@>=1.0.0 <2.0.0",
+                  "from": "is-promise@~1",
                   "resolved": "https://registry.npmjs.org/is-promise/-/is-promise-1.0.1.tgz"
                 }
               }
             },
             "css": {
               "version": "1.0.8",
-              "from": "css@>=1.0.8 <1.1.0",
+              "from": "css@~1.0.8",
               "dependencies": {
                 "css-parse": {
                   "version": "1.0.4",
@@ -407,11 +407,11 @@
             },
             "uglify-js": {
               "version": "2.2.5",
-              "from": "uglify-js@>=2.2.5 <2.3.0",
+              "from": "uglify-js@~2.2.5",
               "dependencies": {
                 "source-map": {
                   "version": "0.1.43",
-                  "from": "source-map@>=0.1.7 <0.2.0",
+                  "from": "source-map@~0.1.7",
                   "resolved": "https://registry.npmjs.org/source-map/-/source-map-0.1.43.tgz",
                   "dependencies": {
                     "amdefine": {
@@ -422,11 +422,11 @@
                 },
                 "optimist": {
                   "version": "0.3.7",
-                  "from": "optimist@>=0.3.5 <0.4.0",
+                  "from": "optimist@~0.3.5",
                   "dependencies": {
                     "wordwrap": {
                       "version": "0.0.2",
-                      "from": "wordwrap@>=0.0.2 <0.1.0"
+                      "from": "wordwrap@~0.0.2"
                     }
                   }
                 }
@@ -482,17 +482,17 @@
       "dependencies": {
         "pkginfo": {
           "version": "0.2.3",
-          "from": "pkginfo@>=0.2.0 <0.3.0",
+          "from": "pkginfo@0.2.3",
           "resolved": "https://registry.npmjs.org/pkginfo/-/pkginfo-0.2.3.tgz"
         },
         "passport-oauth": {
           "version": "0.1.15",
-          "from": "passport-oauth@>=0.1.0 <0.2.0",
+          "from": "passport-oauth@0.1.15",
           "resolved": "https://registry.npmjs.org/passport-oauth/-/passport-oauth-0.1.15.tgz",
           "dependencies": {
             "passport": {
               "version": "0.1.18",
-              "from": "passport@>=0.1.1 <0.2.0",
+              "from": "passport@~0.1.1",
               "resolved": "https://registry.npmjs.org/passport/-/passport-0.1.18.tgz",
               "dependencies": {
                 "pause": {
@@ -504,7 +504,7 @@
             },
             "oauth": {
               "version": "0.9.12",
-              "from": "oauth@>=0.9.0 <0.10.0",
+              "from": "oauth@0.9.x",
               "resolved": "https://registry.npmjs.org/oauth/-/oauth-0.9.12.tgz"
             }
           }
@@ -517,22 +517,22 @@
       "dependencies": {
         "passport-oauth2": {
           "version": "1.1.2",
-          "from": "passport-oauth2@>=1.0.0 <2.0.0",
+          "from": "https://registry.npmjs.org/passport-oauth2/-/passport-oauth2-1.1.2.tgz",
           "resolved": "https://registry.npmjs.org/passport-oauth2/-/passport-oauth2-1.1.2.tgz",
           "dependencies": {
             "passport-strategy": {
               "version": "1.0.0",
-              "from": "passport-strategy@>=1.0.0 <2.0.0",
+              "from": "https://registry.npmjs.org/passport-strategy/-/passport-strategy-1.0.0.tgz",
               "resolved": "https://registry.npmjs.org/passport-strategy/-/passport-strategy-1.0.0.tgz"
             },
             "oauth": {
               "version": "0.9.12",
-              "from": "oauth@>=0.9.0 <0.10.0",
+              "from": "https://registry.npmjs.org/oauth/-/oauth-0.9.12.tgz",
               "resolved": "https://registry.npmjs.org/oauth/-/oauth-0.9.12.tgz"
             },
             "uid2": {
               "version": "0.0.3",
-              "from": "uid2@>=0.0.0 <0.1.0",
+              "from": "https://registry.npmjs.org/uid2/-/uid2-0.0.3.tgz",
               "resolved": "https://registry.npmjs.org/uid2/-/uid2-0.0.3.tgz"
             }
           }
