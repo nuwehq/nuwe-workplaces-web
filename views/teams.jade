@@ -15,10 +15,11 @@ body
 	form
 		legend 
 			| New Team
-		input(name="name", placeholder="Name")
-		br
-		input(name="description", placeholder="description")
-		input(type="submit")
+		form(action='/teams',method='post')
+			input(name="name", placeholder="Name")
+			br
+			input(name="description", placeholder="description")
+			input(type="submit")
 
 	ul.team-list
 		each team in teams
