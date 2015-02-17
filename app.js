@@ -69,12 +69,14 @@ if (process.env.REDISTOGO_URL) {
 } else {
 	var client = redis.createClient();
 	client.select = ((process.env.NODE_ENV || 'development').length);
+	client.flushdb();
 }
 
 
 // End redis connection
 app.get('/', function(req, res){
 	res.render('index', { user: req.user });
+	res.sendStatus(200);
 });
 
 app.get('/teams', function(request, response) {
@@ -131,7 +133,11 @@ function(req, res){
 app.get('/auth/nuwe/callback',
 passport.authenticate('nuwe', { failureRedirect: '/' }),
 function(req, res) {
- res.redirect('/teams');
+ client.hkeys('teams', function(error, names){
+		if(error) throw error;
+		console.log(req.user.id);
+		res.render('teams', { teams: names, user: req.user.displayName });
+	});
 });
 
 app.get('/auth/github',
