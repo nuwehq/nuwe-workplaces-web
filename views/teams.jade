@@ -16,10 +16,21 @@ body
 		legend 
 			| New Team
 		form(action='/teams',method='post')
-			input(name="name", placeholder="Name")
-			br
-			input(name="description", placeholder="description")
-			input(type="submit")
+			//- input(name="name", placeholder="Name")
+			//- br
+			//- input(name="description", placeholder="description")
+			//- input(type="submit")
+			div(data-role='fieldcontain')
+				fieldset(data-role='controlgroup')
+					label(for='name') name
+						input(id='name',type='text',value='',placeholder='name',name='name')
+			div(data-role='fieldcontain')
+				fieldset(data-role='controlgroup')
+					label(for='description') description
+						input(id='description',type='text',value='',placeholder='description',name='description')
+			div(data-role='fieldcontain')   
+				input(type='submit',value='Submit',data-transition='fade', data-theme='c')
+
 
 	ul.team-list
 		each team in teams
