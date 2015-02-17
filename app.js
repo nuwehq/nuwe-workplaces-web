@@ -131,7 +131,7 @@ function(req, res){
 app.get('/auth/nuwe/callback',
 passport.authenticate('nuwe', { failureRedirect: '/' }),
 function(req, res) {
- res.redirect('/account');
+ res.redirect('/teams');
 });
 
 app.get('/auth/github',
