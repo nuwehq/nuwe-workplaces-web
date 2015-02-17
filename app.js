@@ -5,7 +5,10 @@ var routes = require('./routes');
 var bodyParser = require('body-parser');
 var urlencode = bodyParser.urlencoded({ extended: false });
 var path = require('path');
-var config = require('./oauth.js');
+if (NODE_ENV !== 'production') {
+	var config = require('./oauth.js');
+}
+
 var passport = require('passport');
 var NuweStrategy = require('passport-nuwe').Strategy;
 var GithubStrategy = require('passport-github').Strategy;
@@ -20,9 +23,9 @@ done(null, obj);
 
 // config
 passport.use(new NuweStrategy({
- clientID: config.nuwe.clientID,
- clientSecret: config.nuwe.clientSecret,
- callbackURL: config.nuwe.callbackURL
+ clientID: process.env.NUWE_CLIENTID || config.nuwe.clientID,
+ clientSecret: process.env.NUWE_CLIENTSECRET || config.nuwe.clientSecret,
+ callbackURL: process.env.NUWE_CALLBACKURL || config.nuwe.callbackURL
 },
 function(accessToken, refreshToken, profile, done) {
  process.nextTick(function () {
@@ -32,9 +35,9 @@ function(accessToken, refreshToken, profile, done) {
 ));
 
 passport.use(new GithubStrategy({
- clientID: config.github.clientID,
- clientSecret: config.github.clientSecret,
- callbackURL: config.github.callbackURL
+ clientID: process.env.GITHUB_CLIENTID || config.github.clientID,
+ clientSecret: process.env.GITHUB_CLIENTSECRET || config.github.clientSecret,
+ callbackURL: process.env.GITHUB_CALLBACKURL || config.github.callbackURL
 },
 function(accessToken, refreshToken, profile, done) {
  process.nextTick(function () {
