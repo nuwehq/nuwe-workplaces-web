@@ -23,9 +23,9 @@ done(null, obj);
 
 // config
 passport.use(new NuweStrategy({
- clientID: (process.env.NUWE_CLIENTID || config.nuwe.clientID),
- clientSecret: (process.env.NUWE_CLIENTSECRET || config.nuwe.clientSecret),
- callbackURL: (process.env.NUWE_CALLBACKURL || config.nuwe.callbackURL)
+ clientID: process.env.NUWE_CLIENTID,
+ clientSecret: process.env.NUWE_CLIENTSECRET,
+ callbackURL: process.env.NUWE_CALLBACKURL
 },
 function(accessToken, refreshToken, profile, done) {
  process.nextTick(function () {
@@ -35,9 +35,9 @@ function(accessToken, refreshToken, profile, done) {
 ));
 
 passport.use(new GithubStrategy({
- clientID: (process.env.GITHUB_CLIENTID || config.github.clientID),
- clientSecret: (process.env.GITHUB_CLIENTSECRET || config.github.clientSecret),
- callbackURL: (process.env.GITHUB_CALLBACKURL || config.github.callbackURL)
+ clientID: process.env.GITHUB_CLIENTID,
+ clientSecret: process.env.GITHUB_CLIENTSECRET,
+ callbackURL: process.env.GITHUB_CALLBACKURL
 },
 function(accessToken, refreshToken, profile, done) {
  process.nextTick(function () {
